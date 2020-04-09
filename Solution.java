@@ -2,19 +2,20 @@ class Solution {
   public String solution(String s, int n) {
     char[] input = s.toCharArray();
       String answer = "";
-      //1.¾ËÆÄºª a~z (A~Z):  ±îÁö ÃÑ 26°³ 
-      //2.³ª¸ÓÁö ¿¬»ê°ú ºñ½ÁÇÏ´Ù »ý°¢(x = y *z + gama)
-     //¾ËÆÄºª ½ÃÀÛÁ¡ : A / a ¸¦  »ó´ëÀû À§Ä¡ , Àý´ëÀû À§Ä¡·Î ¼­·Î ½ºÀ§Ä¡ 
+      //1.ì•ŒíŒŒë²³ a~z (A~Z):  ê¹Œì§€ ì´ 26ê°œ 
+      //2.ë‚˜ë¨¸ì§€ ì—°ì‚°ê³¼ ë¹„ìŠ·í•˜ë‹¤ ìƒê°(x = y *z + gama):ì•ŒíŒŒë²³ ì´ ê°¯ìˆ˜ (26ê°œ)ë¡œ ë‚˜ëˆ„ì–´ ìžë¦¿ìˆ˜ ì„¸íŒ… ê°€ëŠ¥
+     //ì•ŒíŒŒë²³ ì‹œìž‘ì  : A / a ë¥¼  ìƒëŒ€ì  ìœ„ì¹˜ , ì ˆëŒ€ì  ìœ„ì¹˜ë¡œ ì„œë¡œ ìŠ¤ìœ„ì¹˜ :'4' a->> e
+    // s  n   result   n = 1, (a) -> (b) / (a,b) -> (b,c)/ (c,B,z)-> (d,C,a) : ìžë¦¿ ìˆ˜ë¥¼ ì ˆëŒ€(26)ì„ ê¸°ì¤€ìœ¼ë¡œ ìƒëŒ€ì ì¸ ìœ„ì¹˜ në§Œí¼ ì´ë™ ê°€ëŠ¥! 
     
       
         for(int i = 0 ; i < input.length ; i++) {
-            if(input[i] != ' ') {//i¹è¿­¿¡ ´ã°í
-                if(input[i] >= 'a') { // ½ÃÀÛÁ¡: aºÎÅÍ 26°³~
-                    //  Àý´ëÀû À§Ä¡  ¿¡¼­ »ó´ëÀû À§Ä¡·Î  ½ºÀ§Ä¡ 
-                   //n¸¸Å­ ¹Ð°í %Ã³¸® -> ´Ù½Ã ¿ø·¡´ë·Î µ¹¸² 
+            if(input[i] != ' ') {//ië°°ì—´ì— ë‹´ê³ 
+                if(input[i] >= 'a') { // ì‹œìž‘ì : aë¶€í„° 26ê°œ~
+                    //  ì ˆëŒ€ì  ìœ„ì¹˜  ì—ì„œ ìƒëŒ€ì  ìœ„ì¹˜ë¡œ  ìŠ¤ìœ„ì¹˜ 
+                   //në§Œí¼ ë°€ê³  %ì²˜ë¦¬ -> ë‹¤ì‹œ ì›ëž˜ëŒ€ë¡œ ëŒë¦¼ 
                     answer += (char)((input[i] - 'a' + n) % 26 +'a');
-                    // ½ÃÀÛÁ¡ a±âÁØÀ¸·Î µé¾î¿Â n¸¸Å­ ÀÌµ¿½ÃÅ²ÈÄ %Ã³¸® ÈÄ ´Ù½Ã ¿ø·¡´ë·Î ¹é
-                }else { //½ÃÀÛÁ¡: A±âÁØÀ¸·Î µé¾î¿Â n¸¸Å­ ÀÌµ¿½ÃÅ²ÈÄ %Ã³¸® ÈÄ ´Ù½Ã ¿ø·¡´ë·Î ¹é
+                    // ì‹œìž‘ì  aê¸°ì¤€ìœ¼ë¡œ ë“¤ì–´ì˜¨ në§Œí¼ ì´ë™ì‹œí‚¨í›„ %ì²˜ë¦¬ í›„ ë‹¤ì‹œ ì›ëž˜ëŒ€ë¡œ ë°±
+                }else { //ì‹œìž‘ì : Aê¸°ì¤€ìœ¼ë¡œ ë“¤ì–´ì˜¨ në§Œí¼ ì´ë™ì‹œí‚¨í›„ %ì²˜ë¦¬ í›„ ë‹¤ì‹œ ì›ëž˜ëŒ€ë¡œ ë°±
                     answer += (char)((input[i] - 'A' + n) % 26 +'A');
                 }
                 }else {
